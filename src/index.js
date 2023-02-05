@@ -1,5 +1,11 @@
 import './css/styles.css';
+import { debounce } from 'lodash';
 const DEBOUNCE_DELAY = 300;
+let countryFromInput = null;
+let findCountry = null;
+
+const searchBox = document.getElementById('search-box');
+searchBox.addEventListener('input', debounce(respon, 2000));
 
 function fetchCountries(name) {
   return fetch(
@@ -7,14 +13,16 @@ function fetchCountries(name) {
   );
 }
 
-const newResCountry = fetchCountries('Uk');
-let findCountry = null;
+function respon(e) {
+  countryFromInput = e.target.value;
+  const newResCountry = fetchCountries(`${countryFromInput}`);
 
-newResCountry
-  .then(response => {
-    return response.json();
-  })
-  .then(r => {
-    findCountry = r;
-    return console.log(findCountry);
-  });
+  newResCountry
+    .then(response => {
+      return response.json();
+    })
+    .then(r => {
+      findCountry = r;
+      return console.log(findCountry);
+    });
+}
