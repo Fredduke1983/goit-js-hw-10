@@ -23,6 +23,8 @@ function respon(e) {
     })
     .then(r => {
       findCountry = r;
-      return console.log(findCountry);
+      return findCountry.forEach(element => {
+        console.log(element.name);
+      });
     });
 }
