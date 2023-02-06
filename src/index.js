@@ -35,7 +35,14 @@ function respon(e) {
       } else if (country.length > 10) {
         console.error('too many');
       } else {
-        countryInfo.innerHTML = `<img src=${country[0].flags.svg} width="50px" height="25px"></img>`;
+        console.log(country[0].languages);
+        countryInfo.innerHTML = `
+          <img src=${country[0].flags.svg} width="150px" height="90px"></img>
+          <h2>${country[0].name}</h2>
+          <p>${country[0].capital}</p>
+          <p>${country[0].population}</p>
+          <p>${Object.values(country[0].languages[0].name)}</p>
+        `;
       }
       countryList.innerHTML = countries;
     });
