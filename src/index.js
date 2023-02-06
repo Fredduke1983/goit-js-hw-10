@@ -36,7 +36,6 @@ function respon(e) {
         console.error('too many');
       } else {
         countryInfo.innerHTML = `<img src=${country[0].flags.svg} width="50px" height="25px"></img>`;
-        countryList.innerHTML = '';
       }
       countryList.innerHTML = countries;
     });
