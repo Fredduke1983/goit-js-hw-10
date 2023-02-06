@@ -29,13 +29,13 @@ function respon(e) {
       console.log(country.length);
       if (country.length > 1 && country.length < 11) {
         country.map(element => {
-          countries += `<img src=${element.flags.svg} width="50px" height="25px"></img>`;
+          countries += `<li><img src=${element.flags.svg} width="50px" height="25px"></img></li>`;
         });
       } else if (country.length > 10) {
         console.error('too many');
       } else {
-        countryList.innerHTML = `<li><img src=${country[0].flags.svg} width="50px" height="25px"></img></li>`;
+        countryInfo.innerHTML = `<img src=${country[0].flags.svg} width="50px" height="25px"></img>`;
       }
-      countryInfo.innerHTML = countries;
+      countryList.innerHTML = countries;
     });
 }
