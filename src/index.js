@@ -29,12 +29,14 @@ function respon(e) {
       console.log(country.length);
       if (country.length > 1 && country.length < 11) {
         country.map(element => {
-          countries += `<li><img src=${element.flags.svg} width="50px" height="25px"></img></li>`;
+          countries += `<li><img src=${element.flags.svg} width="50px" height="30px"></img>${element.name}</li>`;
+          countryInfo.innerHTML = '';
         });
       } else if (country.length > 10) {
         console.error('too many');
       } else {
         countryInfo.innerHTML = `<img src=${country[0].flags.svg} width="50px" height="25px"></img>`;
+        countryList.innerHTML = '';
       }
       countryList.innerHTML = countries;
     });
