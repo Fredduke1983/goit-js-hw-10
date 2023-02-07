@@ -18,7 +18,7 @@ const countryInfo = document.querySelector('.country-info');
 const countryList = document.querySelector('.country-list');
 
 const searchBox = document.getElementById('search-box');
-searchBox.addEventListener('input', debounce(respon, 1000));
+searchBox.addEventListener('input', debounce(respon, DEBOUNCE_DELAY));
 
 function fetchCountries(name) {
   return fetch(
