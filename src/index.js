@@ -3,6 +3,7 @@ import { debounce } from 'lodash';
 import Notiflix from 'notiflix';
 import fetchCountries from './js/fetch.js';
 import renderCountries from './js/render.js';
+import onError from './js/onerror.js';
 
 Notiflix.Notify.init({
   width: '300px',
@@ -23,12 +24,5 @@ searchBox.addEventListener('input', debounce(respon, DEBOUNCE_DELAY));
 function respon(e) {
   let countryFromInput = e.target.value.trim();
 
-  fetchCountries(countryFromInput)
-    .then(countriesObject => renderCountries(countriesObject))
-    .catch(error => {
-      console.log(error);
-      countryInfo.innerHTML = '';
-      countryList.innerHTML = '';
-      Notiflix.Notify.failure('Oops, there is no country with that name');
-    });
+  fetchCountries(countryFromInput).then(renderCountries).catch(onError);
 }
